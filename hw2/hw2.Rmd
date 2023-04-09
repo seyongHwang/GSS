@@ -1,0 +1,45 @@
+---
+title: "Hw2"
+author: "2023-20841 Hwang seyong"
+date: "2023-03-25"
+output: pdf_document
+---
+
+```{r}
+x_list <- seq(from=-100, to=100, by=0.1)
+
+integrand <- function(x) {exp(-abs(x))}
+integ <- function(x){
+  integrate(integrand, lower = -x, upper = x^2)$value
+}
+
+#for
+start_time1 <- Sys.time()
+
+sum_integ <- 0
+for(x in x_list){
+  sum_integ <- sum_integ + integ(x)
+}
+
+end_time1 <- Sys.time()
+elapsed_time1 <- as.numeric(difftime(time1=end_time1,
+                                     time2=start_time1,
+                                     units = "secs"))
+cat("elapsed time using for loop : ",sprintf("%.3f",elapsed_time1),"sec",sep="")
+
+
+#sapply
+start_time2 <- Sys.time()
+
+sum(sapply(x_list, integ))
+
+end_time2 <- Sys.time()
+elapsed_time2 <- as.numeric(difftime(time1=end_time2,
+                                     time2=start_time2,
+                                     units = "secs"))
+cat("elapsed time using sapply : ",sprintf("%.3f",elapsed_time2),"sec",sep="")
+
+```
+
+Above are two ways to measure the time for calculating sum of integrals of given function 'integrand'.
+The elapsed time using for loop is longer than the elapsed time using sapply function.

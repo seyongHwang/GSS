@@ -1,0 +1,58 @@
+\documentclass[10pt]{article}
+\author{서울대학교 통계학과 석사 2023-20841 황세용}
+\title{대학원 신입생 세미나 과제 1}
+
+\usepackage{kotex}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem} 
+\newtheorem{proof}{Proof}
+
+
+\begin{document}
+\maketitle
+	
+\begin{theorem}[$\pi-\lambda$ Theorem]
+	If $\mathcal{P}$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system that contains $\mathcal{P}$, then $\sigma(\mathcal{P}) \subset \mathcal{L}$.
+\end{theorem}
+
+\begin{proof}
+	We will show that\\
+	\\
+	(a) if $\l(\mathcal{P})$ is the smallest $\lambda$-system containing $\mathcal{P}$, then $l(\mathcal{P})$ is a $\sigma$-field.\\
+	\\
+	The desired result follows from (a). To see this, note that since $\sigma(\mathcal{P})$ is the smallest $\sigma$-field and $l(\mathcal{P})$ is the smallest $\lambda$-system containing $\mathcal{P}$, we have
+	$$\sigma(\mathcal{P}) \subset l(\mathcal{P}) \subset \mathcal{L}$$
+	
+	\noindent To prove (a), we begin by noting that a $\lambda$-system that is closed under intersection is a $\sigma$-field, since
+	\begin{align*}
+		&\text{if } A\in \mathcal{L} \text{ then } A^c=\Omega-A\in\mathcal{L}\\
+		& A \cup B = (A^c \cap B^c)^c\\
+		& \cup_{i=1}^{n} A_i \uparrow \cup_{i=1}^{\infty} A_i \text{ as } n \uparrow \infty
+	\end{align*}
+	
+	\noindent Thus, it is enough to show\\
+	\\
+	(b) $l(\mathcal{P})$ is closed under intersection.\\
+	\\
+	To prove (b), we let $\mathcal{G}_A = \left\{B:A\cap B \in l(\mathcal{P})\right\}$ and prove\\
+	\\
+	(c) if $A \in l(\mathcal{P})$, then $\mathcal{G}_A$ is a $\lambda$-system.\\
+	\\
+	To check this, we note: (i) $\Omega \in \mathcal{G}$, since $A \in l(\mathcal{L})$.\\
+	\\
+	(ii) if $B, C \in \mathcal{G}_A$ and $B \supset C$, then $A \cap (B-C) = (A\cap B)-(A\cap C) \in l(\mathcal{P})$, since $A\cap B, A\cap C \in l(\mathcal{P})$  and $\l(\mathcal{P})$ is a $\lambda$-system.\\
+	\\
+	(iii) if $B_n \in \mathcal{G}_A$ and $B_n \uparrow B$, then $A \cap B_n \uparrow A \cap B \in l(\mathcal{P})$, since $A\cap B_n \in l(\mathcal{P})$ and $\l(\mathcal{P})$ is a $\lambda$-system.\\
+	\\
+	To get from (c) to (b), we note that since $\mathcal{P}$ is a $\pi$-system,\\
+	\\
+	if $A \in \mathcal{P}$, then $\mathcal{G}_A \supset \mathcal{P}$ and so (c) implies $\mathcal{G}_A \supset l(\mathcal{P})$\\
+	\\
+	i.e., if $A in \mathcal{P}$ and $B \in l(\mathcal{P})$, then $A\cap B \in l(\mathcal{P})$. Interchanging $A$ and $B$ in the last sentence: if $A \in l(\mathcal{P})$ and $B \in \mathcal{P}$, then $A\cap B \in l(\mathcal{P})$ but this implies\\
+	\\
+	if $A \in l(\mathcal{P})$, then $\mathcal{G}_A \supset \mathcal{P}$, and so (c) implies $\mathcal{G}_A \supset l(\mathcal{P})$.\\
+	\\
+	This conclusion implies that if $A, B \in l(\mathcal{P})$, then $A\cap B \in l(\mathcal{P})$, which proves (b) and completes the proof.
+\end{proof}
+
+\end{document}	
